@@ -1,0 +1,62 @@
+[Run stack_overflow..]
+pin -t ../../obj-ia32/proj1.so --  ./stack_overflow 1À™Ph//shh/bin‰ãPS‰á°Í€AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA€õÿ¿
+**************** Overflow Detected *******************
+IndirectBranch(0x8048423): jump to 0xbffff580, stored in tainted byte(0xbffff38c)
+Stack 0: History of Mem(0xbffff5e0): 0x8048424, 
+Stack 1: History of Mem(0xbffff38c): 0x8048424, 0x8048472, 0x8048418, 
+******************************************************
+
+
+[Run rop_dynamic..]
+pin -t ../../obj-ia32/proj1.so --  ./rop_dynamic AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA¢Ê`µ@€{µ÷bµ/bin¬Bkµ¢Ê`µD€{µ÷bµ//sh¬Bkµ¢Ê`µH€{µo'gµAAAA¬Bkµ>Ibµ@€{µK”cµH€{µAAAA¢Ê`µH€{µo'gµAAAA¤bµ¤bµ¤bµ¤bµ¤bµ¤bµ¤bµ¤bµ¤bµ¤bµ¤bµ%—cµ
+**************** Overflow Detected *******************
+IndirectBranch(0x8048423): jump to 0xb560caa2, stored in tainted byte(0xbffff2fc)
+Stack 0: History of Mem(0xbffff557): 0x8048424, 
+Stack 1: History of Mem(0xbffff2fc): 0x8048424, 0x8048472, 0x8048418, 
+******************************************************
+
+
+[Run stack_overflow_gets..]
+pin -t ../../obj-ia32/proj1.so --  ./stack_overflow_gets < stack_overflow.input
+**************** Overflow Detected *******************
+IndirectBranch(0x8048423): jump to 0xbffff2b0, stored in tainted byte(0xbffff32c)
+Stack 0: History of Mem(0xbffff39c): 0x8048424, 0x804844c, 
+Stack 1: History of Mem(0xbffff32c): 0x8048424, 0x804845a, 0x8048418, 
+******************************************************
+
+
+[Run stack_overflow_fgets..]
+pin -t ../../obj-ia32/proj1.so --  ./stack_overflow_fgets < stack_overflow.input
+**************** Overflow Detected *******************
+IndirectBranch(0x8048465): jump to 0xbffff2b0, stored in tainted byte(0xbffff32c)
+Stack 0: History of Mem(0xbffff39c): 0x8048466, 0x80484ae, 
+Stack 1: History of Mem(0xbffff32c): 0x8048466, 0x80484bc, 0x8048456, 
+******************************************************
+
+
+[Run stack_overflow2..]
+pin -t ../../obj-ia32/proj1.so --  ./stack_overflow2 1À™Ph//shh/bin‰ãPS‰á°Í€AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA€õÿ¿
+**************** Overflow Detected *******************
+IndirectBranch(0x8048415): jump to 0xbffff580, stored in tainted byte(0xbffff38c)
+Stack 0: History of Mem(0xbffff5df): 0x8048416, 
+Stack 1: History of Reg10: 0x8048416, 0x8048464, 0x804840a, 0x80483d3, 
+Stack 2: History of Mem(0xbffff38c): 0x8048416, 0x8048464, 0x804840a, 0x80483d6, 
+******************************************************
+
+
+[Run overflow_fncptr..]
+pin -t ../../obj-ia32/proj1.so --  ./overflow_fncptr < ./overflow_fncptr.input
+**************** Overflow Detected *******************
+IndirectBranch(0x804852f): jump to 0x8048432, stored in tainted register(reg10).
+Stack 0: History of Mem(0x80498e0): 0x8048490, 0x80484cf, 
+Stack 1: History of Reg10: 0x8048490, 0x804852a, 
+******************************************************
+
+
+[Run overflow_fncptr..]
+pin -t ../../obj-ia32/proj1.so --  ./overflow_fncptr_heap < ./overflow_fncptr_heap.input
+**************** Overflow Detected *******************
+IndirectBranch(0x80485e1): jump to 0x8048482, stored in tainted register(reg10).
+Stack 0: History of Mem(0x804a02c): 0x8048509, 0x804855e, 
+Stack 1: History of Reg10: 0x8048509, 0x80485de, 
+******************************************************
